@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Buttons</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+
+<body>
+    <!-- RESULT EMAIL box -->
+    <div id="emailBox" class="modal">
+        <div class="modal-content">
+            <h2>Enter your email</h2>
+            <input type="email" id="emailInput" placeholder="example@email.com" required>
+            <div class="modal-buttons">
+                <button id="submitEmail">Submit</button>
+                <button id="closeBox">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULT /150 box -->
+    <div id="resultBox" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Result</h2>
+            <p id="resultText" style="font-size: 48px; font-weight: bold;"></p>
+            <button id="closeResult">Close</button>
+        </div>
+    </div>
+
+    <!-- LOADING SCREEN FOR DOWNLOAD-->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="overlayText">Preparing your download...</p>
+    </div>
+
+    <!-- LOADING SCREEN FOR RESULT-->
+    <div id="loadingOverlay2" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+
+    <!-- CERTIFICATE box -->
+    <div id="certBox" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Enter Your Email to Download Certificate</h2>
+            <input type="email" id="certEmailInput" placeholder="Enter your email">
+            <div class="modal-buttons">
+                <button id="submitCertEmail">Submit</button>
+                <button id="closeCert">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="errorModal" class="modal">
+        <div class="modal-content error-content">
+            <p id="errorText">Email not found.</p>
+            <div class="modal-buttons">
+                <button id="closeError">Close</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+
+
+
+
+
+    <div class="button-container">
+        <button id="button1">View Result</button>
+        <button id="button2">Download Certificate</button>
+    </div>
+
+    <img src="AMCMAALogo.jpg" alt="Logo" class="logo">
+
+    <script src="js/main.js"></script>
+</body>
+</html>
