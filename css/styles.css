@@ -1,3 +1,7 @@
+* {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important
+}
+
 body {
     position: relative;
     margin: 0;
@@ -5,7 +9,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
     overflow: hidden;           
 }
 
@@ -45,7 +48,7 @@ body::before {
   border-radius: 20px;
   display: flex;
   flex-direction: row; /* buttons side by side */
-  gap: 60px; /* space between buttons */
+  gap: 70px; /* space between buttons */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   z-index: 5;
 }
@@ -70,7 +73,7 @@ button:hover {
 
 
 .modal {
-  display: none;               /* hide initially */
+  display: none; /* hide initially */
   position: fixed;
   top: 0; left: 0;
   width: 100%;
@@ -84,28 +87,84 @@ button:hover {
 /* Modal content */
 .modal-content {
   background-color: white;
-  padding: 40px;
+  padding: 40px 45px;
   border-radius: 10px;
   text-align: center;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 18px;
-  min-width: 350px;
+  min-width: 450px;
+  max-width: 90%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  
+  /* New: centers and spaces content properly */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
-.modal-content input {
-  width: 80%;
+
+/* Inputs and dropdowns */
+.modal-content input{
+  width: 85%;
   padding: 10px;
-  margin-top: 15px;
   font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-family: Verdana, sans-serif;
 }
+.modal-content select {
+  width: 85%;
+  padding: 10px 45px 10px 12px;   /* extra room on right for arrow */
+  font-size: 16px;
+  border-radius: 6px;
+  color: #888;
+  border: 1px solid #ccc;
+  font-family: Verdana, sans-serif;
+  background-color: white;
+
+  /* remove system arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* bigger custom arrow */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2020%2012'%3E%3Cpath%20fill='%23666'%20d='M0%200l10%2012l10-12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;   /* wider arrow */
+}
+.modal-content select option {
+  color: #000; /* all options are black in dropdown */
+}
+
+/* Buttons group */
 .modal-buttons {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 25px;
 }
+
+.modal-buttons button {
+  padding: 10px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-buttons button:hover {
+  background-color: #b3b3b3;
+}
+
+.modal-content select:hover {
+  border-color: #999;
+  cursor: pointer;
+}
+
 
 #submitEmail {
   background-color: #ccc
@@ -158,7 +217,7 @@ button:hover {
 
 
 input::placeholder {
-    font-family: Verdana, Geneva, sans-serif; /* your font */
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* your font */
     font-size: 16px;
     font-weight: 500;
     color: #888; /* gray placeholder color */
@@ -211,7 +270,7 @@ input {
 
 /* Placeholder text */
 input::placeholder {
-  font-family: Verdana, Geneva, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #888;
 }
 
@@ -221,8 +280,12 @@ input::placeholder {
   min-width: 400px;    /* optional min size */
 }
 
+#categorySelect option[value=""] {
+  color: #999; /* placeholder light gray */
+}
+
 #errorModal .modal-content {
-  width: 10%;          /* can adjust width */
+  width: 21%;          /* can adjust width */
   max-width: 400px;
   min-width: 230px;
   padding: 30px;
@@ -236,28 +299,95 @@ input::placeholder {
 
 /* Error text */
 #errorText {
+  text-align: center;
   font-size: 18px;
-  font-weight: 500;
 }
-
-/* Buttons */
-#errorModal .modal-buttons {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-#errorModal .modal-buttons button {
-  padding: 8px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 6px;
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #999;
   cursor: pointer;
-  background-color: #ccc;
-  color: black;
-  transition: all 0.3s ease;
+  transition: color 0.2s;
 }
 
-#errorModal .modal-buttons button:hover {
-  background-color: #bbb;
+.close:hover {
+  color: #333;
+}
+
+.error-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px; /* space below header/message */
+}
+
+#resultText {
+    font-family:Verdana, Geneva, Tahoma, sans-serif !important;
+    margin: 0;
+}
+
+#resultCategory {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+    margin-top: 8px; /* close to the score */
+}
+#closeResult {
+    padding: 8px 30px;      /* smaller size */
+    font-size: 18px;        /* smaller text */
+    background-color: #ccc; /* change background color */
+    color: #383838;            /* text color */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+#closeResult:hover {
+    background-color: #bbb; /* darker on hover */
+}
+
+
+
+
+
+#resultHeader {
+  color: #333;
+}
+
+
+/* Message (congratulations or not) */
+#resultMessage {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: #333; 
+}
+
+
+#resultBox .modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centers vertically */
+  align-items: center;      /* centers horizontally */
+  height: 450px;            /* adjust as you wish */
+  text-align: center;
+  padding: 40px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

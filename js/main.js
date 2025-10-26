@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const cutoffScores = {
+        "AMC 10A": 94.5,
+        "AMC 10B": 105,
+        "AMC 12A": 76.5,
+        "AMC 12B": 88.5
+    };
+    const loadingOverlay2 = document.getElementById('loadingOverlay2');
+
     const viewResult = document.getElementById('button1'); // View Result
     const downloadCert = document.getElementById('button2'); // download cert.
 
@@ -18,7 +26,15 @@ document.addEventListener('DOMContentLoaded', function() {
     /*error box*/
     const errorBox = document.getElementById('errorModal');
     const closeErrorBox = document.getElementById('closeError');
+    const errorText = document.getElementById('errorText');
 
+    categorySelect.addEventListener('change', function() {
+    if (this.value) {
+        this.style.color = '#000';
+    } else {
+        this.style.color = '#888';
+    }
+    });
     let usersData = []; 
     async function loadUsers() {
         try {
@@ -30,11 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     window.onload = loadUsers;
-
     function getDirectDriveLink(shareLink) {
         const match = shareLink.match(/\/d\/(.*?)\//);
         return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : shareLink;
     }
+
 
 
     viewResult.addEventListener('click', function() {
@@ -56,28 +72,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
     submitEmail.addEventListener('click', function() {
         const email = emailInput.value.trim().toLowerCase();
+        const categorySelect = document.getElementById('categorySelect');
+        const selectedCategory = categorySelect.value;
         if (!email) {
-            alert('Please enter your email.');
+            loadingOverlay2.classList.add('active');
+            setTimeout(() => {
+                errorBox.style.display = 'flex';
+                errorText.textContent = "Please enter an email.";
+                loadingOverlay2.classList.remove('active');
+            }, 700);
+            closeErrorBox.addEventListener('click', function() {
+                errorBox.style.display = 'none';
+            });
             return;
         }
-        const user = usersData.find(u => u.email.toLowerCase() === email);
-        const loadingOverlay2 = document.getElementById('loadingOverlay2');
+        if(!selectedCategory) {
+            loadingOverlay2.classList.add('active');
+            setTimeout(() => {
+                errorBox.style.display = 'flex';
+                errorText.textContent = "Please select a category.";
+                loadingOverlay2.classList.remove('active');
+            }, 700);
+            closeErrorBox.addEventListener('click', function() {
+                errorBox.style.display = 'none';
+            });
+            return;
+        }
 
+        const user = usersData.find(u => u.email.toLowerCase() === email && u.category === selectedCategory);
         if (user) {
             loadingOverlay2.classList.add('active');
-            // Set the text inside the result box
             setTimeout(() => {
-                document.getElementById("resultText").textContent = user.result + " / 150";
-                // Show the result modal
-                document.getElementById("resultBox").style.display = "flex";
+                showResultModal(user, selectedCategory, cutoffScores);
                 loadingOverlay2.classList.remove('active');
-            }, 1500);
+            }, 2000);
+
             document.getElementById("closeResult").addEventListener('click', function() {
                 document.getElementById("resultBox").style.display = "none";
+                resetCategorySelect();
                 emailBox.style.display = 'none';
             });
         } else {
-            errorBox.style.display = 'flex';
+            loadingOverlay2.classList.add('active');
+            setTimeout(() => {
+                errorBox.style.display = 'flex';
+                errorText.textContent = "Unable to find contestant.";
+                loadingOverlay2.classList.remove('active');
+            }, 700);
             closeErrorBox.addEventListener('click', function() {
                 errorBox.style.display = 'none';
             });
@@ -88,7 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
     submitEmail2.addEventListener('click', function() {
         const email = emailInput2.value.trim().toLowerCase();
         if (!email) {
-            alert('Please enter your email.');
+            errorBox.style.display = 'flex';
+            closeErrorBox.addEventListener('click', function() {
+                errorBox.style.display = 'none';
+            });
             return;
         }
         const user = usersData.find(u => u.email.toLowerCase() === email);
@@ -123,14 +167,41 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    document.getElementById('closeError').addEventListener('click', function() {
+        document.getElementById('errorModal').style.display = 'none';
+    });
 
     
+    function showResultModal(user, selectedCategories, cutoffScores) {
+        const modal = document.getElementById('resultBox');
+        const categoryText = document.getElementById('resultCategory');
+        const scoreText = document.getElementById('resultText');
+        const messageText = document.getElementById('resultMessage');
 
+        categoryText.textContent = 'Category: ' + selectedCategories;
+        scoreText.textContent = `${user.result} / 150`;
 
+        const passed = user.result >= cutoffScores[selectedCategories];
 
-
-
-    
+        if (passed) {
+            messageText.textContent = 'Congratulations for qualifying AIME!';
+            setTimeout(() => {
+                confetti({
+                    particleCount: 300,
+                    spread: 300,
+                    origin: { y: 0.55 }
+                });
+            }, 100);
+            
+        } else {
+            messageText.textContent = "Thank you for participating in AMC 2025!";
+        }   
+        modal.style.display = 'flex';
+    };
+    function resetCategorySelect() {
+        categorySelect.value = "";         // reset to placeholder
+        categorySelect.style.color = "#888"; // placeholder gray
+    }
 
     
 });
