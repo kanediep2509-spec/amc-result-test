@@ -325,6 +325,8 @@ input::placeholder {
   justify-content: center;
 }
 
+
+
 .score-section {
     display: flex;
     flex-direction: column;
@@ -345,20 +347,23 @@ input::placeholder {
     color: #333;
     margin-top: 8px; /* close to the score */
 }
-#closeResult {
-    padding: 8px 30px;      /* smaller size */
-    font-size: 18px;        /* smaller text */
-    background-color: #ccc; /* change background color */
-    color: #383838;            /* text color */
-    border: none;
-    border-radius: 6px;
+
+.close-result {
+    position: absolute;
+    top: 164px;
+    left: 498px;
+    right: 2px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #999;
     cursor: pointer;
-    margin-top: 30px;
+    transition: color 0.2s ease;
 }
 
-#closeResult:hover {
-    background-color: #bbb; /* darker on hover */
+.close-result:hover {
+    color: #333;
 }
+
 
 
 
@@ -366,6 +371,10 @@ input::placeholder {
 
 #resultHeader {
   color: #333;
+}
+
+#resultText {
+  margin-top: 20px;
 }
 
 
@@ -377,6 +386,25 @@ input::placeholder {
   color: #333; 
 }
 
+#resultName {
+  font-size: 34px;
+  color: #333;
+  margin-top: 50px;   /* small space below the score */
+  margin-bottom: 20px; /* closer to category */
+  font-weight: bold;
+
+}
+
+#resultInfo {
+  gap: 150px;
+}
+
+#resultCategory {
+  font-size: 22px;
+  color: #333;
+  margin-top: 0;      /* remove default top margin */
+}
+
 
 #resultBox .modal-content {
   display: flex;
@@ -386,6 +414,7 @@ input::placeholder {
   height: 450px;            /* adjust as you wish */
   text-align: center;
   padding: 40px;
+  min-width: 475px;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);

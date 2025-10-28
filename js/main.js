@@ -106,10 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 showResultModal(user, selectedCategory, cutoffScores);
                 loadingOverlay2.classList.remove('active');
             }, 2000);
-
-            document.getElementById("closeResult").addEventListener('click', function() {
-                document.getElementById("resultBox").style.display = "none";
-                resetCategorySelect();
+            document.querySelector('.close-result').addEventListener('click', () => {
+                document.getElementById('resultBox').style.display = 'none';
                 emailBox.style.display = 'none';
             });
         } else {
@@ -169,19 +167,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.getElementById('closeError').addEventListener('click', function() {
         document.getElementById('errorModal').style.display = 'none';
+
     });
+
+    
 
     
     function showResultModal(user, selectedCategories, cutoffScores) {
         const modal = document.getElementById('resultBox');
-        const categoryText = document.getElementById('resultCategory');
-        const scoreText = document.getElementById('resultText');
+        const name = document.getElementById('resultName');
         const messageText = document.getElementById('resultMessage');
+        const scoreText = document.getElementById('resultText');
+        const categoryText = document.getElementById('resultCategory');
 
         categoryText.textContent = 'Category: ' + selectedCategories;
         scoreText.textContent = `${user.result} / 150`;
 
         const passed = user.result >= cutoffScores[selectedCategories];
+        name.textContent = capitalize(user.firstName) + " " + capitalize(user.lastName);
 
         if (passed) {
             messageText.textContent = 'Congratulations for qualifying AIME!';
@@ -189,15 +192,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 confetti({
                     particleCount: 300,
                     spread: 300,
-                    origin: { y: 0.55 }
+                    origin: { y: 0.55 },
+                    ticks: 350
                 });
             }, 100);
             
         } else {
             messageText.textContent = "Thank you for participating in AMC 2025!";
+            setTimeout(() => {
+                confetti({
+                    particleCount: 250,
+                    spread: 300,
+                    origin: { y: 0.55 },
+                    ticks: 250
+                });
+            }, 100);
         }   
         modal.style.display = 'flex';
     };
+
+    function capitalize(name) {
+        if (!name) return '';
+        return name.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
+    }
+
     function resetCategorySelect() {
         categorySelect.value = "";         // reset to placeholder
         categorySelect.style.color = "#888"; // placeholder gray
