@@ -130,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = emailInput2.value.trim().toLowerCase();
         const certCategorySelect = document.getElementById('certCategorySelect');
         const certSelectedCategory = certCategorySelect.value;
-        alert(certSelectedCategory);
         if (!email) {
             errorBox.style.display = 'flex';
             closeErrorBox.addEventListener('click', function() {
