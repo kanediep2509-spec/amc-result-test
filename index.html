@@ -15,21 +15,31 @@
     <!-- RESULT EMAIL box -->
     <div id="emailBox" class="modal">
         <div class="modal-content">
-            <h2>Enter your email</h2>
-            <input type="email" id="emailInput" placeholder="example@email.com" required>
-            <select id="categorySelect" required>
-                <option value="" disabled selected hidden>Select your category</option>
-                <option value="AMC 10A">AMC 10A</option>
-                <option value="AMC 10B">AMC 10B</option>
-                <option value="AMC 12A">AMC 12A</option>
-                <option value="AMC 12B">AMC 12B</option>
-            </select>
+
+            <h2>Check Your Result!</h2>
+
+            <div class="input-group">
+                <label for="emailInput">Email Address:</label>
+                <input type="email" id="emailInput" placeholder="example@email.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="categorySelect">Category:</label>
+                <select id="categorySelect" required>
+                    <option value="" disabled selected hidden>Select your category</option>
+                    <option value="AMC 10A">AMC 10A</option>
+                    <option value="AMC 10B">AMC 10B</option>
+                    <option value="AMC 12A">AMC 12A</option>
+                    <option value="AMC 12B">AMC 12B</option>
+                </select>
+            </div>
+
             <div class="modal-buttons">
                 <button id="submitEmail">Submit</button>
                 <button id="closeBox">Close</button>
             </div>
+
         </div>
-        
     </div>
 
     <!-- RESULT /150 box -->
@@ -65,12 +75,32 @@
     <!-- CERTIFICATE box -->
     <div id="certBox" class="modal" style="display:none;">
         <div class="modal-content">
-            <h2>Enter Your Email to Download Certificate</h2>
-            <input type="email" id="certEmailInput" placeholder="Enter your email">
+
+            <h2>Download Your Certificate!</h2>
+
+            <!-- Email input group -->
+            <div class="input-group">
+                <label for="certEmailInput">Email Address:</label>
+                <input type="email" id="certEmailInput" placeholder="example@email.com" required>
+            </div>
+
+            <!-- Category input group -->
+            <div class="input-group">
+                <label for="certCategorySelect">Category:</label>
+                <select id="certCategorySelect" required>
+                    <option value="" disabled selected hidden>Select your category</option>
+                    <option value="AMC 10A">AMC 10A</option>
+                    <option value="AMC 10B">AMC 10B</option>
+                    <option value="AMC 12A">AMC 12A</option>
+                    <option value="AMC 12B">AMC 12B</option>
+                </select>
+            </div>
+
             <div class="modal-buttons">
                 <button id="submitCertEmail">Submit</button>
                 <button id="closeCert">Close</button>
             </div>
+
         </div>
     </div>
 

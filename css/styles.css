@@ -1,5 +1,5 @@
 * {
-    font-family:Verdana, Geneva, Tahoma, sans-serif !important
+    font-family:Arial, Helvetica, sans-serif !important
 }
 
 body {
@@ -45,7 +45,7 @@ body::before {
 .button-container {
   background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark rectangle */
   padding: 60px 100px; /* controls size of rectangle */
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: row; /* buttons side by side */
   gap: 70px; /* space between buttons */
@@ -88,7 +88,7 @@ button:hover {
 .modal-content {
   background-color: white;
   padding: 40px 45px;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 18px;
@@ -108,7 +108,7 @@ button:hover {
   width: 85%;
   padding: 10px;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 5px;
   border: 1px solid #ccc;
   box-sizing: border-box;
   font-family: Verdana, sans-serif;
@@ -117,7 +117,7 @@ button:hover {
   width: 85%;
   padding: 10px 45px 10px 12px;   /* extra room on right for arrow */
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 5px;
   color: #888;
   border: 1px solid #ccc;
   font-family: Verdana, sans-serif;
@@ -150,7 +150,7 @@ button:hover {
   padding: 10px 25px;
   font-size: 16px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   background-color: #ccc;
   cursor: pointer;
   transition: background-color 0.2s;
@@ -209,7 +209,7 @@ button:hover {
   font-size: 18px;
   margin-top: 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
   background-color: #ccc;
   color: black;
@@ -217,7 +217,6 @@ button:hover {
 
 
 input::placeholder {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; /* your font */
     font-size: 16px;
     font-weight: 500;
     color: #888; /* gray placeholder color */
@@ -264,13 +263,128 @@ input {
   font-size: 16px;
   color: black;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 0px;
   border: 1px solid #ccc;
 }
 
+
+/* Space between label and input */
+.input-group {
+    width: 100%;
+    text-align: left;
+    margin-top: 10px;        /* slightly more separation */
+}
+
+#emailInput,
+#categorySelect {
+    border-radius: 0px;   /* change to 0 if you want perfectly square */
+}
+
+/* Label styling */
+.input-group label {
+    display: block;
+    margin-bottom: 10px;     /* more space above input */
+    font-size: 16px;
+    font-weight: 400;        /* unbold */
+    color: #000000;   
+}
+
+/* Input + Select styling */
+#emailInput,
+#categorySelect {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+/* Buttons moved downward */
+.modal-buttons {
+    margin-top: 35px;        /* more space between inputs and buttons */
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+
+
+#certBox .modal-content {
+    width: 590px;          /* wider box */
+    padding: 30px 40px;
+    min-height: 463px; 
+    box-sizing: border-box;
+    flex-direction: column; /* stack children vertically */
+    align-items: flex-start;
+}
+
+#certBox h2 {
+    align-self: center; /* centers only the heading */
+    margin-top: 33px;
+    margin-bottom: 23px;
+}
+
+#certBox .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    margin-top: 35px;
+}
+/* Label styling */
+#certBox label {
+    display: block;
+    text-align: left !important;
+    margin-bottom: 10px;    /* smaller space below label */
+    font-weight: normal;   /* unbold */
+    font-size: 16px;
+    color: #000;
+}
+
+/* Input / Select styling */
+#certBox input,
+#certBox select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 0px;     /* square-ish */
+    box-sizing: border-box;          /* remove extra top margin */
+    font-family: inherit;
+}
+#certBox .input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    align-items: center; /* centers the input/select */
+}
+
+#certBox .input-group input,
+#certBox .input-group select {
+    width: 98%;   /* smaller input box */
+    padding: 10px;
+    font-size: 16px;   /* smaller text inside input */
+    box-sizing: border-box;
+}
+
+#certBox .input-group label {
+    width: 98%;        /* same width as input */
+    margin-bottom: 10px;
+    text-align: left;  /* label text sticks to left */
+}
+
+
+
+
+
+
+
+
 /* Placeholder text */
 input::placeholder {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #888;
 }
 
@@ -284,12 +398,19 @@ input::placeholder {
   color: #999; /* placeholder light gray */
 }
 
+#certBox select {
+    color: #999; /* placeholder gray initially */
+}
+#certBox select:valid {
+    color: #000;
+}
+
 #errorModal .modal-content {
-  width: 21%;          /* can adjust width */
+  width: 19%;          /* can adjust width */
   max-width: 400px;
   min-width: 230px;
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 7px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   font-family: Verdana, Geneva, sans-serif;
@@ -381,7 +502,7 @@ input::placeholder {
 
 /* Message (congratulations or not) */
 #resultMessage {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   margin-bottom: 25px;
   color: #333; 
@@ -416,7 +537,7 @@ input::placeholder {
   text-align: center;
   padding: 40px;
   min-width: 475px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   font-family: Verdana, Geneva, Tahoma, sans-serif;

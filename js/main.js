@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let usersData = []; 
     async function loadUsers() {
         try {
-            const response = await fetch("data.json");
+            const response = await fetch("amc_online_2025.json");
             usersData = await response.json(); 
             console.log(usersData); 
         } catch (error) {
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
+    /* CHECK RESULT SUBMIT BUTTON */
     submitEmail.addEventListener('click', function() {
         const email = emailInput.value.trim().toLowerCase();
         const categorySelect = document.getElementById('categorySelect');
@@ -124,8 +125,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
     });
 
+    /* DOWNLOAD CERTIFICATE SUBMIT BUTTON */
     submitEmail2.addEventListener('click', function() {
         const email = emailInput2.value.trim().toLowerCase();
+        const certCategorySelect = document.getElementById('certCategorySelect');
+        const certSelectedCategory = certCategorySelect.value;
+        alert(certSelectedCategory);
         if (!email) {
             errorBox.style.display = 'flex';
             closeErrorBox.addEventListener('click', function() {
@@ -133,7 +138,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             return;
         }
-        const user = usersData.find(u => u.email.toLowerCase() === email);
+        if(!certSelectedCategory) {
+            loadingOverlay2.classList.add('active');
+            setTimeout(() => {
+                errorBox.style.display = 'flex';
+                errorText.textContent = "Please select a category.";
+                loadingOverlay2.classList.remove('active');
+            }, 700);
+            closeErrorBox.addEventListener('click', function() {
+                errorBox.style.display = 'none';
+            });
+            return;
+        }
+
+        const user = usersData.find(u => u.email.toLowerCase() === email && u.category === certSelectedCategory);
         const overlayText = document.getElementById('overlayText');
         const loadingOverlay = document.getElementById('loadingOverlay');
 
@@ -159,12 +177,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             }, 3000);
         } else {
-            errorBox.style.display = 'flex';
+            loadingOverlay2.classList.add('active');
+            setTimeout(() => {
+                errorBox.style.display = 'flex';
+                errorText.textContent = "Unable to find contestant.";
+                loadingOverlay2.classList.remove('active');
+            }, 700);
             closeErrorBox.addEventListener('click', function() {
                 errorBox.style.display = 'none';
             });
         }
     });
+
     document.getElementById('closeError').addEventListener('click', function() {
         document.getElementById('errorModal').style.display = 'none';
 
@@ -204,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     particleCount: 250,
                     spread: 300,
                     origin: { y: 0.55 },
-                    ticks: 250
+                    ticks: 200
                 });
             }, 100);
         }   
