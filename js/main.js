@@ -243,8 +243,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById("openCertLink").addEventListener("click", function(event) {
-        const loadingOverlay2 = document.getElementById('loadingOverlay2');
-        loadingOverlay2.classList.add('active');
+        const loadingOverlay3 = document.getElementById('loadingOverlay3');
+        loadingOverlay3.classList.add('active');
         setTimeout(() => {
             // Close the result box
             event.preventDefault(); // prevent the page from jumping
@@ -253,8 +253,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Open the certificate box
             document.getElementById("certBox").style.display = "flex";
-            loadingOverlay2.classList.remove('active');
-        }, 1600);
+            loadingOverlay3.classList.remove('active');
+        }, 1250);
     });
 
 

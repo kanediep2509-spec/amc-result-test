@@ -228,7 +228,7 @@ input::placeholder {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0,0,0,0.55);
   color: white;
   font-size: 30px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -237,6 +237,10 @@ input::placeholder {
   align-items: center;
   flex-direction: column;
   z-index: 1000;
+}
+
+#loadingOverlay3 {
+  background-color: rgba(0,0,0,0.4); /* darker background */
 }
 
 .loading-overlay.active {
