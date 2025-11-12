@@ -162,10 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const directLink = getDirectDriveLink(user.certificate);
                 const link = document.createElement('a');
                 link.href = directLink;
-                const firstName = user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1).toLowerCase();
-                const lastName = user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1).toLowerCase();
-                const fileName = `${firstName}_${lastName}_${certSelectedCategory}_Certificate.pdf`;
-                link.download = fileName;
+                link.download = 'Certificate.pdf';
                 link.click();
 
                 overlayText.textContent = "Download Completed!";
@@ -207,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const congratulationMessage = document.getElementById('resultCongratulation');
 
         congratulationMessage.textContent = 'Congratulations for completing AMC!';
-        scoreText.textContent = `${user.result} / 150`;
+        scoreText.textContent = user.result + ' / 150';
 
         const passed = user.result >= cutoffScores[selectedCategories];
         name.textContent = capitalize(user.firstName) + " " + capitalize(user.lastName);

@@ -1,5 +1,5 @@
 * {
-    font-family:Arial, Helvetica, sans-serif !important
+    font-family: Arial, Helvetica, sans-serif !important
 }
 
 body {
@@ -23,7 +23,7 @@ body::before {
   background-size: cover;       /* fill the screen */
   background-position: center;  /* center it */
   background-repeat: no-repeat;
-  filter: blur(0.7px);            /* blur the background */
+  filter: blur(0.8px);            /* blur the background */
   z-index: -1;                  /* behind content */
 }
 
@@ -45,7 +45,7 @@ body::before {
 .button-container {
   background-color: rgba(0, 0, 0, 0.6); /* semi-transparent dark rectangle */
   padding: 60px 100px; /* controls size of rectangle */
-  border-radius: 10px;
+  border-radius: 7px;
   display: flex;
   flex-direction: row; /* buttons side by side */
   gap: 70px; /* space between buttons */
@@ -59,7 +59,7 @@ button {
   color: white;
   border: none;
   padding: 20px 40px;
-  border-radius: 10px;
+  border-radius: 7px;
   font-size: 24px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -414,7 +414,7 @@ input::placeholder {
   max-width: 400px;
   min-width: 230px;
   padding: 30px;
-  border-radius: 7px;
+  border-radius: 5px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   font-family: Verdana, Geneva, sans-serif;
@@ -462,7 +462,7 @@ input::placeholder {
 }
 
 #resultText {
-    font-family:Verdana, Geneva, Tahoma, sans-serif !important;
+    font-family:Arial, Helvetica, sans-serif;
     margin: 0;
 }
 
@@ -511,6 +511,7 @@ input::placeholder {
 }
 
 #resultText {
+  letter-spacing: 1px;
   margin-top: 38px;
   margin-bottom: 12px;
 }
@@ -561,6 +562,17 @@ input::placeholder {
     color: #0056b3;        /* darker shade on hover */
     text-decoration: underline; /* optional underline */
 }
-#downloadLink a:hover {
-    transform: scale(3);
+
+
+.checkmark {
+    display: none;
+    width: 60px;
+    height: 60px;
+    border: 5px solid #4CAF50;
+    border-radius: 50%;
+    color: #4CAF50;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 50px;
+    text-align: center;
 }
