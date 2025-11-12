@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let usersData = []; 
     async function loadUsers() {
         try {
-            const response = await fetch("amc_online_2025.json");
+            const response = await fetch("amc-online-data.json");
             usersData = await response.json(); 
             console.log(usersData); 
         } catch (error) {
@@ -162,7 +162,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const directLink = getDirectDriveLink(user.certificate);
                 const link = document.createElement('a');
                 link.href = directLink;
-                link.download = `Certificate.pdf`;
+                const firstName = user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1).toLowerCase();
+                const lastName = user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1).toLowerCase();
+                const fileName = `${firstName}_${lastName}_${certSelectedCategory}_Certificate.pdf`;
+                link.download = fileName;
                 link.click();
 
                 overlayText.textContent = "Download Completed!";
