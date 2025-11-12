@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const cutoffScores = {
-        "AMC 10A": 94.5,
-        "AMC 10B": 105,
-        "AMC 12A": 76.5,
-        "AMC 12B": 88.5
+        "AMC 10A": 1194.5,
+        "AMC 10B": 11105,
+        "AMC 12A": 1176.5,
+        "AMC 12B": 1188.5
     };
     const loadingOverlay2 = document.getElementById('loadingOverlay2');
 
@@ -201,9 +201,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = document.getElementById('resultName');
         const messageText = document.getElementById('resultMessage');
         const scoreText = document.getElementById('resultText');
-        const categoryText = document.getElementById('resultCategory');
+        const congratulationMessage = document.getElementById('resultCongratulation');
 
-        categoryText.textContent = 'Category: ' + selectedCategories;
+        congratulationMessage.textContent = 'Congratulations for completing AMC!';
         scoreText.textContent = `${user.result} / 150`;
 
         const passed = user.result >= cutoffScores[selectedCategories];
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
             
         } else {
-            messageText.textContent = "Thank you for participating in AMC 2025!";
+            messageText.textContent = 'Category: ' + selectedCategories + ' 2025';
             setTimeout(() => {
                 confetti({
                     particleCount: 250,
@@ -238,6 +238,22 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!name) return '';
         return name.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
     }
+
+    document.getElementById("openCertLink").addEventListener("click", function(event) {
+        const loadingOverlay2 = document.getElementById('loadingOverlay2');
+        loadingOverlay2.classList.add('active');
+        setTimeout(() => {
+            // Close the result box
+            event.preventDefault(); // prevent the page from jumping
+            document.getElementById("resultBox").style.display = "none";
+            document.getElementById("emailBox").style.display = "none";
+
+            // Open the certificate box
+            document.getElementById("certBox").style.display = "flex";
+            loadingOverlay2.classList.remove('active');
+        }, 1600);
+    });
+
 
     function resetCategorySelect() {
         categorySelect.value = "";         // reset to placeholder

@@ -170,28 +170,28 @@ button:hover {
   background-color: #ccc
 }
 #submitEmail:hover {
-  background-color: #bbb;
+  background-color: #b1b1b1;
 }
 
 #closeBox {
   background-color: #ccc;
 }
 #closeBox:hover {
-  background-color: #bbb;
+  background-color: #b1b1b1;
 }
 
 #submitCertEmail {
   background-color: #ccc
 }
 #submitCertEmail:hover {
-  background-color: #bbb;
+  background-color: #b1b1b1;
 }
 
 #closeCert {
   background-color: #ccc;
 }
 #closeCert:hover {
-  background-color: #bbb;
+  background-color: #b1b1b1;
 }
 
 #overlayText {
@@ -462,7 +462,7 @@ input::placeholder {
     margin: 0;
 }
 
-#resultCategory {
+#resultCongratulation {
     font-size: 20px;
     font-weight: 500;
     color: #333;
@@ -492,11 +492,9 @@ input::placeholder {
 
 
 #resultHeader {
-  color: #333;
-}
-
-#resultText {
-  margin-top: 20px;
+  font-size: 30px;
+  color: #000000;
+  margin-top: 38px;
 }
 
 
@@ -504,14 +502,19 @@ input::placeholder {
 #resultMessage {
   font-size: 22px;
   font-weight: 500;
-  margin-bottom: 25px;
-  color: #333; 
+  margin-top: 5px;
+  color: #000000; 
+}
+
+#resultText {
+  margin-top: 38px;
+  margin-bottom: 12px;
 }
 
 #resultName {
   font-size: 34px;
-  color: #333;
-  margin-top: 50px;   /* small space below the score */
+  color: #000000;
+  margin-top: 30px;   /* small space below the score */
   margin-bottom: 20px; /* closer to category */
   font-weight: bold;
 
@@ -521,10 +524,11 @@ input::placeholder {
   gap: 150px;
 }
 
-#resultCategory {
+#resultCongratulation {
   font-size: 22px;
-  color: #333;
+  color: #000000;
   margin-top: 0;      /* remove default top margin */
+  margin-bottom: 10px;
 }
 
 
@@ -541,4 +545,18 @@ input::placeholder {
   background-color: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#downloadLink a {
+    color: #007BFF;        /* normal link color */
+    text-decoration: underline; /* remove underline */
+    transition: color 0.2s ease;
+}
+
+#downloadLink a:hover {
+    color: #0056b3;        /* darker shade on hover */
+    text-decoration: underline; /* optional underline */
+}
+#downloadLink a:hover {
+    transform: scale(3);
 }
