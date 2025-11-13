@@ -132,7 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const certCategorySelect = document.getElementById('certCategorySelect');
         const certSelectedCategory = certCategorySelect.value;
         if (!email) {
-            errorBox.style.display = 'flex';
+            loadingOverlay2.classList.add('active');
+            setTimeout(() => {
+                errorBox.style.display = 'flex';
+                errorText.textContent = "Please enter an email.";
+                loadingOverlay2.classList.remove('active');
+            }, 700);
             closeErrorBox.addEventListener('click', function() {
                 errorBox.style.display = 'none';
             });
