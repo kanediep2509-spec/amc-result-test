@@ -59,15 +59,16 @@ button {
   color: white;
   border: none;
   padding: 20px 40px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-size: 24px;
   cursor: pointer;
-  transition: background 0.3s ease;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
 button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 
@@ -78,7 +79,7 @@ button:hover {
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5); /* dark semi-transparent overlay */
+  background-color: rgba(0,0,0,0.25); /* dark semi-transparent overlay */
   justify-content: center;
   align-items: center;
   z-index: 100;
@@ -167,31 +168,45 @@ button:hover {
 
 
 #submitEmail {
-  background-color: #ccc
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  background-color: #333;
+  color: white;
 }
 #submitEmail:hover {
-  background-color: #b1b1b1;
+  background-color: #555;
+  transform: scale(1.05);
 }
 
 #closeBox {
-  background-color: #ccc;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  background-color: #333;
+  color: white;
 }
 #closeBox:hover {
-  background-color: #b1b1b1;
+  
+  background-color: #555;
+  transform: scale(1.05);
 }
 
 #submitCertEmail {
-  background-color: #ccc
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  background-color: #333;
+  color: white;
 }
 #submitCertEmail:hover {
-  background-color: #b1b1b1;
+  background-color: #555;
+  transform: scale(1.05);
 }
 
 #closeCert {
-  background-color: #ccc;
+  transition: background-color 0.4s ease, transform 0.3s ease;
+  background-color: #333;
+  color: white;
 }
+
 #closeCert:hover {
-  background-color: #b1b1b1;
+  background-color: #555;
+  transform: scale(1.05);
 }
 
 #overlayText {
@@ -239,8 +254,16 @@ input::placeholder {
   z-index: 1000;
 }
 
+#loadingOverlay2 {
+  background-color: rgba(0,0,0,0.25); /* darker background */
+}
+
 #loadingOverlay3 {
-  background-color: rgba(0,0,0,0.4); /* darker background */
+  background-color: rgba(0,0,0,0.1); /* darker background */
+}
+
+#loadingOverlay4 {
+  background-color: rgba(0,0,0,0.25); /* darker background */
 }
 
 .loading-overlay.active {
@@ -440,6 +463,7 @@ input::placeholder {
 
 .close:hover {
   color: #333;
+  transform: scale(1.1);
 }
 
 .error-content {
@@ -488,6 +512,7 @@ input::placeholder {
 
 .close-result:hover {
     color: #333;
+    transform: scale(1.1);
 }
 
 
@@ -561,5 +586,141 @@ input::placeholder {
 #downloadLink a:hover {
     color: #0056b3;        /* darker shade on hover */
     text-decoration: underline; /* optional underline */
+    transform: scale(5);
 }
 
+/* Top gradient background */
+.top-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
+  z-index: 1;
+}
+
+/* Logo and navigation container */
+.top-bar {
+  position: absolute;
+  top: 20px;
+  left: 55px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  z-index: 2;
+}
+
+/* Logo styling */
+.top-logo {
+  margin-top: 18px;
+  height: 55px;
+  width: auto;
+}
+
+/* Navigation text styling */
+.top-texts {
+  display: flex;
+  left: 30px;
+  margin-top: 15px;
+  gap: 60px;
+}
+
+.nav-item {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.nav-item:hover {
+  transform: scale(1.1); /* increase size by 10% */
+  opacity: 0.9; /* slightly fade for effect */
+}
+
+
+/* ENQUIRY MODAL DON'T TOUCH ! */
+#enquiryModal .modal-content {
+  max-width: 600px;          /* limit width */
+  max-height: 80vh;
+  margin: 100px auto;        /* center vertically */
+  padding: 30px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  background-color: white;
+}
+
+#enquiryModal .modal-content input,
+#enquiryModal .modal-content textarea {
+  display: block;               /* each input is block-level */
+  width: 550px;
+  margin: 0px auto 30px auto;  /* center horizontally, with spacing top/bottom */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: 15px;
+  box-sizing: border-box;       /* includes padding in width */
+  text-align: left !important;
+}
+
+#enquiryModal .modal-content label {
+  display: block;            /* each label on its own line */
+  width: 550px;              /* match the input field width */
+  margin: 0 auto 5px auto;   /* center horizontally with a small gap below */
+  font-weight: normal;         /* optional: make it stand out */
+  text-align: left;          /* align text to left edge of the label/input */
+  font-size: 16px;
+}
+
+
+#enquiryModal .modal-content button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#enquiryModal .modal-content button:hover {
+  background-color: #555;
+  transform: scale(1.05);
+}
+
+/* Close button for enquiry modal */
+#enquiryModal .close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+#enquiryModal #enquiryMessage {
+  height: 120px;           /* keeps previous height */
+  margin-bottom: 40px;     /* increase space to submit button */
+}
+
+#enquiryModal .close-modal:hover {
+  color: #333;
+  transform: scale(1.1);
+}
+#enquiryModal .close-modal {
+  color: #999;
+  transform: transform 0.3s ease;
+}
+
+#enquiryModal .modal-content button {
+  width: 110px;      /* smaller width */
+  padding: 10px 12px; /* smaller height */
+  font-size: 18.5px;   /* smaller text */
+  margin: 0 auto;    /* center horizontally */
+  display: block;
+}

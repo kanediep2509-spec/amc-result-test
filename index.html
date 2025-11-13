@@ -3,16 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/main.js"></script>
     <title>AMC 2025 Result</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="favicon-final.png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+            publicKey: "siCnhr_d1sVgXtjyO",
+        });
+        })();
+    </script>
 </head>
 
 
 <body>
+    <div class="top-gradient"></div>
+
+
+    <div class="top-bar">
+        <img src="logo-amc.png" alt="Logo" class="top-logo">
+        <div class="top-texts">
+            <span class="nav-item">Home</span>
+            <span class="nav-item">Contact Us</span>
+        </div>
+    </div>
+
     <!-- RESULT EMAIL box -->
     <div id="emailBox" class="modal">
         <div class="modal-content">
@@ -79,6 +102,11 @@
         <div class="spinner"></div>
     </div>
 
+    <!-- LOADING SCREEN TO OPEN CONTACT US PAGE-->
+    <div id="loadingOverlay4" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
 
     <!-- CERTIFICATE box -->
     <div id="certBox" class="modal" style="display:none;">
@@ -122,7 +150,29 @@
     
 
     
+    <div id="enquiryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            
+            <h2>Enquiry Form</h2>
+            <form id="enquiryForm">
+            <label for="enquiryName">Full Name:</label>
+            <input type="text" id="enquiryName" placeholder="Your full name" required>
 
+            <label for="enquiryEmail">Email Address:</label>
+            <input type="email" id="enquiryEmail" placeholder="example@email.com" required>
+
+            <label for="enquiryPhone">Phone Number:</label>
+            <input type="tel" id="enquiryPhone" placeholder="Your phone number" required>
+            
+
+            <label for="enquiryMessage">Message:</label>
+            <textarea id="enquiryMessage" rows="5" placeholder="Your message..." required></textarea>
+
+            <button type="submit" id="enquirySubmit" >Submit</button>
+            </form>
+        </div>
+    </div>
 
 
 
@@ -133,8 +183,6 @@
         <button id="button2">Download Certificate</button>
     </div>
 
-    <img src="AMCMAALogo.jpg" alt="Logo" class="logo">
 
-    <script src="js/main.js"></script>
 </body>
 </html>

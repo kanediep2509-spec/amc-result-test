@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "AMC 12B": 1188.5
     };
     const loadingOverlay2 = document.getElementById('loadingOverlay2');
+    const loadingOverlay4 = document.getElementById('loadingOverlay4');
 
     const viewResult = document.getElementById('button1'); // View Result
     const downloadCert = document.getElementById('button2'); // download cert.
@@ -254,11 +255,86 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1250);
     });
 
-
-    function resetCategorySelect() {
-        categorySelect.value = "";         // reset to placeholder
-        categorySelect.style.color = "#888"; // placeholder gray
+    /* ENQUIRY MODAL SET UP */
+    document.querySelector("#enquiryModal .close-modal").onclick = function() {
+        document.getElementById("enquiryModal").style.display = "none";
     }
+
+    /* OPEN THE CONTACT US PAGE  */
+    const contactText = document.querySelector(".nav-item:nth-child(2)");
+    contactText.addEventListener("click", function() {
+        document.getElementById("loadingOverlay4").classList.add('active');
+        setTimeout(() => {
+            document.getElementById("enquiryModal").style.display = "block";
+            document.getElementById("loadingOverlay4").classList.remove('active');
+        }, 700);
+    });
+
+    /* FUNCTION TO SEND ENQUIRY EMAILJS AUTOMATIC */
+    function sendEnquiryEmail() {
+        let parms = {
+            name: document.getElementById("enquiryName").value,
+            email: document.getElementById("enquiryEmail").value,
+            phone: document.getElementById("enquiryPhone").value,
+            message: document.getElementById("enquiryMessage").value
+        };
+        emailjs.send("service_btpe0sq", "template_hkzn2pc", parms);
+        event.preventDefault();
+        
+    }
+
+    document.getElementById("enquirySubmit").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent form submission
+        overlayText.textContent = "Submitting your enquiry...";
+        loadingOverlay.classList.add('active');
+
+        setTimeout(() => {
+            overlayText.textContent = "We have received your enquiry!";
+            document.querySelector('.spinner').style.display = 'none';
+
+            setTimeout(() => {
+                loadingOverlay.classList.remove('active');
+                document.querySelector('.spinner').style.display = 'block'; // reset spinner
+                document.getElementById("enquiryModal").style.display = "none";
+            }, 1500);
+        }, 3000);
+
+        sendEnquiryEmail()
+    });
+
+
+    /* CLOSE MODALS CLICKING OUTSIDE SET UP */
+    window.addEventListener("click", function(event) {
+        const modal = document.getElementById("resultBox");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+    window.addEventListener("click", function(event) {
+        const modal = document.getElementById("certBox");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+    window.addEventListener("click", function(event) {
+        const modal = document.getElementById("emailBox");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+    window.addEventListener("click", function(event) {
+        const modal = document.getElementById("errorModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+    window.addEventListener("click", function(event) {
+        const modal = document.getElementById("enquiryModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
 
     
 });
