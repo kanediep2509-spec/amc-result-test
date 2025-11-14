@@ -743,8 +743,14 @@ input::placeholder {
 
 
 #enquiryModal #enquiryMessage {
-  height: 120px;           /* keeps previous height */
+  height: auto;           /* keeps previous height */
   margin-bottom: 40px;     /* increase space to submit button */
+}
+
+#enquiryMessage::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+    color: #888; /* gray placeholder color */
 }
 
 #enquiryModal .close-modal:hover {
