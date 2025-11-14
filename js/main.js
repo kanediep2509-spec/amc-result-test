@@ -272,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             document.getElementById("enquiryModal").style.display = "block";
             document.getElementById("loadingOverlay4").classList.remove('active');
-        }, 700);
+        }, 400);
     });
 
     /* FUNCTION TO SEND ENQUIRY EMAILJS AUTOMATIC */
@@ -289,22 +289,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById("enquirySubmit").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent form submission
-        overlayText.textContent = "Submitting your enquiry...";
-        loadingOverlay.classList.add('active');
+        const form = document.getElementById("enquiryForm");
 
-        setTimeout(() => {
-            overlayText.textContent = "We have received your enquiry!";
-            document.querySelector('.spinner').style.display = 'none';
-
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            form.reportValidity();
+            return;
+        } else {
+            event.preventDefault();
+            overlayText.textContent = "Submitting your enquiry...";
+            loadingOverlay.classList.add('active');
             setTimeout(() => {
-                loadingOverlay.classList.remove('active');
-                document.querySelector('.spinner').style.display = 'block'; // reset spinner
-                document.getElementById("enquiryModal").style.display = "none";
-            }, 1500);
-        }, 3000);
+                overlayText.textContent = "We have received your enquiry!";
+                document.querySelector('.spinner').style.display = 'none';
 
-        sendEnquiryEmail()
+                setTimeout(() => {
+                    loadingOverlay.classList.remove('active');
+                    document.querySelector('.spinner').style.display = 'block'; // reset spinner
+                    document.getElementById("enquiryModal").style.display = "none";
+                    document.getElementById("enquiryMessage").value = "";
+                }, 2500);
+            }, 4300);
+        }
+        
     });
 
 

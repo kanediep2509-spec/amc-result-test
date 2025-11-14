@@ -19,13 +19,29 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('background-image.png'); /* your image */
+  background: 
+        linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), /* dark overlay */
+        url('background-web.jpg');
   background-size: cover;       /* fill the screen */
   background-position: center;  /* center it */
-  background-repeat: no-repeat;
-  filter: blur(0.8px);            /* blur the background */
+  background-repeat: no-repeat;          /* blur the background */
   z-index: -1;                  /* behind content */
 }
+
+#button1 {
+  width: 220px;
+  padding: 24px 28px;
+}
+
+#button2 {
+  width: 330px;
+  padding: 24px 28px;
+}
+.top-logo {
+    height: 50px;        /* adjust as needed */
+    margin-right: 20px;  /* space between logo and nav items */
+}
+
 
 .overlay {
   position: relative;
@@ -48,14 +64,14 @@ body::before {
   border-radius: 7px;
   display: flex;
   flex-direction: row; /* buttons side by side */
-  gap: 70px; /* space between buttons */
+  gap: 80px; /* space between buttons */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   z-index: 5;
 }
 
 /* Button style */
 button {
-  background-color: #007bff;
+  background-color: #ff9100;
   color: white;
   border: none;
   padding: 20px 40px;
@@ -66,9 +82,10 @@ button {
   transition: background-color 0.4s ease, transform 0.3s ease;
 }
 
+
 button:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+  background-color: #c16a00;
+  transform: scale(1.08);
 }
 
 
@@ -674,6 +691,19 @@ input::placeholder {
   font-weight: normal;         /* optional: make it stand out */
   text-align: left;          /* align text to left edge of the label/input */
   font-size: 16px;
+}
+
+.enquiry-subtext {
+    font-size: 16px;
+    color: #000000;        /* soft dark grey */
+    margin-top: -10px;  /* pull slightly closer to header */
+    margin-bottom: 20px;
+    text-align: center;   /* align with form labels */
+    font-style: italic;
+}
+
+#button1, #button2 {
+  font-weight: 600;
 }
 
 
