@@ -34,6 +34,7 @@ body::before {
   background-size: cover;       /* fill the screen */
   background-position: center;  /* center it */
   background-repeat: no-repeat;          /* blur the background */
+  background-attachment: fixed;
   z-index: -1;                  /* behind content */
 }
 
@@ -114,6 +115,7 @@ button:hover {
 /* Modal content */
 .modal-content {
   background-color: white;
+  position: relative;
   padding: 40px 45px;
   border-radius: 5px;
   text-align: center;
@@ -524,23 +526,23 @@ input::placeholder {
 }
 
 
+
 .close-result {
-    position: absolute;
-    top: 164px;
-    left: 498px;
-    right: 2px;
-    font-size: 25px;
-    font-weight: bold;
-    color: #999;
-    cursor: pointer;
-    transition: color 0.2s ease;
+  position: absolute;
+  top: 0.45em;       /* relative to font-size of parent */
+  right: 0.8em;     /* relative to font-size of parent */
+  font-size: 1.65em; /* scales proportionally */
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s;
+  transform: transform 0.2s ease;
 }
 
 .close-result:hover {
-    color: #333;
-    transform: scale(1.1);
+  color: #333;
+  transform: scale(1.1);
 }
-
 
 
 
@@ -621,7 +623,7 @@ input::placeholder {
   top: 0;
   left: 0;
   width: 100%;
-  height: 200px;
+  height: 150px;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent);
   z-index: 1;
 }
@@ -669,22 +671,36 @@ input::placeholder {
 
 
 /* ENQUIRY MODAL DON'T TOUCH ! */
+#enquiryModal {
+  box-shadow:  rgba(0,0,0,0.25); /* visible shadow */
+  top: 2%;
+  max-height: 100vh;         /* allow it to grow a little more toward bottom */
+  overflow-y: auto; 
+}
+
 #enquiryModal .modal-content {
-  max-width: 600px;          /* limit width */
+  max-width: 550px;          /* limit width */
   max-height: 80vh;
   margin: 100px auto;        /* center vertically */
   padding: 30px;
   position: relative;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.25);
   background-color: white;
+}
+
+#enquiryModal h2 {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  
 }
 
 #enquiryModal .modal-content input,
 #enquiryModal .modal-content textarea {
   display: block;               /* each input is block-level */
-  width: 550px;
-  margin: 0px auto 30px auto;  /* center horizontally, with spacing top/bottom */
+  width: 500px;
+  margin: 0px auto 20px auto;  /* center horizontally, with spacing top/bottom */
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -695,11 +711,19 @@ input::placeholder {
 
 #enquiryModal .modal-content label {
   display: block;            /* each label on its own line */
-  width: 550px;              /* match the input field width */
+  width: 500px;              /* match the input field width */
   margin: 0 auto 5px auto;   /* center horizontally with a small gap below */
   font-weight: normal;         /* optional: make it stand out */
   text-align: left;          /* align text to left edge of the label/input */
   font-size: 16px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 15px;       /* change to whatever size you want */
+  color: #888;           /* optional: change color */
+  font-weight: normal;   /* optional */
+  font-family: Arial, sans-serif; /* optional */
 }
 
 .enquiry-subtext {
@@ -714,6 +738,7 @@ input::placeholder {
 #button1, #button2 {
   font-weight: 600;
 }
+
 
 
 #enquiryModal .modal-content button {
@@ -734,17 +759,19 @@ input::placeholder {
 /* Close button for enquiry modal */
 #enquiryModal .close-modal {
   position: absolute;
-  top: 15px;
-  right: 20px;
-  font-size: 28px;
+  top: 0.45em;       /* relative to font-size of parent */
+  right: 0.8em;     /* relative to font-size of parent */
+  font-size: 1.65em; /* scales proportionally */
   font-weight: bold;
+  color: #999;
   cursor: pointer;
 }
 
 
+
 #enquiryModal #enquiryMessage {
   height: auto;           /* keeps previous height */
-  margin-bottom: 40px;     /* increase space to submit button */
+  margin-bottom: 35px;     /* increase space to submit button */
 }
 
 #enquiryMessage::placeholder {
@@ -752,6 +779,9 @@ input::placeholder {
     font-weight: 500;
     color: #888; /* gray placeholder color */
 }
+
+
+
 
 #enquiryModal .close-modal:hover {
   color: #333;

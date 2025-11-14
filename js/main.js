@@ -280,7 +280,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let parms = {
             name: document.getElementById("enquiryName").value,
             email: document.getElementById("enquiryEmail").value,
-            phone: document.getElementById("enquiryPhone").value,
             message: document.getElementById("enquiryMessage").value
         };
         emailjs.send("service_btpe0sq", "template_hkzn2pc", parms);
