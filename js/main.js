@@ -297,6 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         } else {
             event.preventDefault();
+            sendEnquiryEmail();
             overlayText.textContent = "Submitting your enquiry...";
             loadingOverlay.classList.add('active');
             setTimeout(() => {
